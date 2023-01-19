@@ -33,6 +33,7 @@ function teardown() {
     echo "Output: $output"
     echo "Status: $status"
     echo "Result: $result"
+    echo "CREDENTIALS_OUTPUT: ${CREDENTIALS_OUTPUT}"
 
     assert_success
     assert_output --partial "Assumed Role Successfully"
