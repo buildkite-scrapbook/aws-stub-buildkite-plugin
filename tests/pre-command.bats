@@ -18,7 +18,8 @@ function setup() {
 
     # # Stubs
     stub aws \
-            "sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example : echo ${CREDENTIALS_OUTPUT}"
+        "::sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example : echo test-output" \
+        "s3api list-buckets : echo example-bucket-name"
 
 }
 
@@ -30,11 +31,12 @@ function teardown() {
 @test "Test AWS Assume Role" {
     run "$PWD/hooks/pre-command"
 
-    echo "Output: $output"
-    echo "Status: $status"
-    echo "Result: $result"
-    echo "CREDENTIALS_OUTPUT: ${CREDENTIALS_OUTPUT}"
+    # echo "Output: $output"
+    # echo "Status: $status"
+    # echo "Result: $result"
 
     assert_success
+    # assert_output --partial "example-bucket-name"
+    assert_output --partial "test-output"
     assert_output --partial "Assumed Role Successfully"
 }
