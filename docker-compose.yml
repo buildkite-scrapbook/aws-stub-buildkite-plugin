@@ -2,6 +2,6 @@ version: '3.7'
 services:
   tests:
     # image: buildkite/plugin-tester:latest
-    image: frankpengau/buildkite-plugin-tester:custom-minor-release-bats-mock-v2-1-1
+    image: frankpengau/buildkite-plugin-tester:custom-minor-release-bats-mock-v2-1-2
     volumes:
       - ".:/plugin"
