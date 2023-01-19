@@ -3,6 +3,6 @@ set -euo pipefail
 
 ROLE_ARN="arn:aws:iam::123456789012:role/xaccounts3access"
 ROLE_SESSION_NAME="s3-access-example"
-CREDENTIALS=$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name "${ROLE_SESSION_NAME}")
+CREDENTIALS="$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name "${ROLE_SESSION_NAME}")"
 
 echo "Assumed Role Successfully"
