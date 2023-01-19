@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+AWS_ROLE_ARN="arn:aws:iam::123456789012:role/xaccounts3access"
+AWS_ROLE_SESSION_NAME="s3-access-example"
+AWS_CREDENTIALS=$(aws sts assume-role --role-arn "${AWS_ROLE_ARN}" --role-session-name "${AWS_ROLE_SESSION_NAME}")
+
+echo "Assumed Role Successfully"
