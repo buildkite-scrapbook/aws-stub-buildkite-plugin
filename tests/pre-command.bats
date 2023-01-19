@@ -16,10 +16,9 @@ function setup() {
         }
     }'
 
-    # # Stubs
+    # Stubs
     stub aws \
-        "::sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example : echo test-output" \
-        "s3api list-buckets : echo example-bucket-name"
+        "::sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example : echo ${CREDENTIALS_OUTPUT}"
 
 }
 
@@ -36,7 +35,9 @@ function teardown() {
     # echo "Result: $result"
 
     assert_success
-    # assert_output --partial "example-bucket-name"
-    assert_output --partial "test-output"
+    assert_output --partial "ROLE_ARN: arn:aws:iam::123456789012:role/xaccounts3access"
+    assert_output --partial "ROLE_SESSION_NAME: s3-access-example"
+    assert_output --partial "Using aws stub command: aws sts assume-role --role-arn arn:aws:iam::123456789012:role/xaccounts3access --role-session-name s3-access-example"
+    assert_output --partial "ASIAIOSFODNN7EXAMPLE"
     assert_output --partial "Assumed Role Successfully"
 }

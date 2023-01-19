@@ -4,7 +4,10 @@ set -euo pipefail
 ROLE_ARN="arn:aws:iam::123456789012:role/xaccounts3access"
 ROLE_SESSION_NAME="s3-access-example"
 CREDENTIALS=$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name "${ROLE_SESSION_NAME}")
-# CREDENTIALS=$(aws s3api list-buckets)
+
+echo "ROLE_ARN: ${ROLE_ARN}"
+echo "ROLE_SESSION_NAME: ${ROLE_SESSION_NAME}"
+echo "Using aws stub command: aws sts assume-role --role-arn ${ROLE_ARN} --role-session-name ${ROLE_SESSION_NAME}"
 echo "CREDENTIALS: ${CREDENTIALS}"
 
 echo "Assumed Role Successfully"
