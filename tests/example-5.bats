@@ -6,6 +6,8 @@ export AWS_STUB_DEBUG=3
 
 teardown() {
     unstub aws
+    echo "unstub status: $status"
+    echo "unstub result: $result"
 }
 
 @test "Test AWS Assume Role - Example 5" {
@@ -17,7 +19,7 @@ json_object_multiple_line_cat=$(cat <<EOF
     "total_results": 1,
     "data": [
         {
-            "empId": "$id",
+            "empId": "1001",
             "name": "Tim",
             "designation": "Engineer"
         }
